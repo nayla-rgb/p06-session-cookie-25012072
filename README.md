@@ -1,8 +1,23 @@
-# Pertemuan 06 - Session, Cookie, Flash Message, dan GitHub
+# Praktikum Pemrograman Web I - Pertemuan 6
 
-Nama: Nayla Husna
+## Identitas
+
+Nama: Nayla Husna  
 NIM: 25012072
 
-Project praktikum Pemrograman Web I Pertemuan 6.
-Materi yang dipelajari adalah Session, Cookie, Flash Message,
-keranjang belanja, dan GitHub.
+## Deskripsi
+
+Aplikasi keranjang belanja sederhana menggunakan PHP
+dengan session, flash message, dan cookie.
+
+## Fitur
+
+- Katalog produk
+- Tambah produk
+- Keranjang menggunakan session
+- Hapus produk
+- Kosongkan keranjang
+- Flash message
+- Tema light/dark menggunakan cookie
+- Validasi input
+- Escape output
