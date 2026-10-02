@@ -40,3 +40,22 @@ $target = $action === 'add'
 
 header('Location: ' . $target);
 exit;
+
+elseif (
+    $action === 'remove' &&
+    $id !== false &&
+    isset($_SESSION['cart'][$id])
+) {
+
+    unset($_SESSION['cart'][$id]);
+
+    setFlash('Produk dihapus dari keranjang.');
+
+}
+elseif ($action === 'clear') {
+
+    $_SESSION['cart'] = [];
+
+    setFlash('Keranjang dikosongkan.');
+
+}

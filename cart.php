@@ -73,5 +73,24 @@ $total = 0;
 
 <?php endif; ?>
 
+<form method="post" action="actions.php">
+    <input type="hidden" name="action" value="remove">
+    <input type="hidden" name="id" value="<?= $id ?>">
+
+    <button type="submit">
+        Hapus
+    </button>
+</form>
+
+<form method="post" action="actions.php">
+
+    <input type="hidden" name="action" value="clear">
+
+    <button type="submit">
+        Kosongkan Keranjang
+    </button>
+
+</form>
+
 </body>
 </html>
