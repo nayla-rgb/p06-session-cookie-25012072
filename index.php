@@ -5,8 +5,66 @@ require_once __DIR__ . '/functions.php';
 
 $products = require __DIR__ . '/data/products.php';
 
+$allowedThemes = ['light', 'dark'];
+
+$theme = $_COOKIE['theme'] ?? 'light';
+
+if (!in_array($theme, $allowedThemes, true)) {
+    $theme = 'light';
+}
+
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST'
+    && isset($_POST['theme'])
+) {
+
+    $candidate = $_POST['theme'];
+
+    if (in_array($candidate, $allowedThemes, true)) {
+
+        setcookie('theme', $candidate, [
+            'expires' => time() + 60 * 60 * 24 * 30,
+            'path' => '/',
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
+
+        header('Location: index.php');
+        exit;
+    }
+}
+
 $flash = pullFlash();
 ?>
+
+<form method="post">
+
+    <label>Tema:</label>
+
+    <select name="theme">
+
+        <option value="light"
+            <?= $theme === 'light' ? 'selected' : '' ?>>
+            Light
+        </option>
+
+        <option value="dark"
+            <?= $theme === 'dark' ? 'selected' : '' ?>>
+            Dark
+        </option>
+
+    </select>
+
+    <button type="submit">
+        Simpan Tema
+    </button>
+
+    <body style="
+    background: <?= $theme === 'dark' ? '#222' : '#fff' ?>;
+    color: <?= $theme === 'dark' ? '#fff' : '#000' ?>;
+">
+
+</form>
 
 <!DOCTYPE html>
 <html lang="id">
